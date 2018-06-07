@@ -15,28 +15,34 @@
 
 
 //funcoes-------------------------------------------------
-/*void menu(){
-    printf("1-Adicionar na Fila\n");
-    printf("2-Chamar o proximo da fila\n");
-    printf("3-Sair");
+void menu(){
+    t_arvore *ptr=alocafila();
+    int prioridade,quantidade=1;
+    char nome[100];
+    int x;
+    while(1){
+        printf("1-Adicionar na Fila\n");
+        printf("2-Chamar o proximo da fila\n");
+        printf("3-Sair\n");
+        scanf("%d", &x);
+        if(x==1){
+            printf("Digite o nome; ");
+            scanf("%s", nome);
+            printf("Digite a prioridade: ");
+            scanf("%d", &prioridade);
+            alocanafila(ptr, &quantidade, prioridade, nome);
+        }
+        else if(x==2){
+            proximodafila(ptr, &quantidade);
+        }
+        else if(x==3){
+            destroifila(ptr, &quantidade);
+            return;
+        }
+    }
 }
-*/
+
 int main(){
-    t_arvore *ptr;
-    int quantidade=1;
-    ptr=alocafila();
-    alocanafila(ptr, &quantidade, 8, "Lucas");
-    alocanafila(ptr, &quantidade, 10, "Mateus");
-    alocanafila(ptr, &quantidade, 70, "Davi");
-    alocanafila(ptr, &quantidade, 100, "pedro");
-    alocanafila(ptr, &quantidade, 1000, "lucas");
-    alocanafila(ptr, &quantidade, 2, "mel");
-    proximodafila(ptr, &quantidade);
-    proximodafila(ptr, &quantidade);
-    proximodafila(ptr, &quantidade);
-    proximodafila(ptr, &quantidade);
-    proximodafila(ptr, &quantidade);
-    proximodafila(ptr, &quantidade);
-    destroifila(ptr, &quantidade);
+    menu();
     return 0;
 }
