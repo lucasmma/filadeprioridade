@@ -21,6 +21,7 @@ void menu(){
     char nome[100];
     int x;
     while(1){
+        printf("----------Menu de opcoes----------\n");
         printf("1-Adicionar na Fila\n");
         printf("2-Chamar o proximo da fila\n");
         printf("3-Sair\n");
