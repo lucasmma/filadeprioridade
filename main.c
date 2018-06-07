@@ -24,7 +24,7 @@
 int main(){
     t_arvore *ptr;
     int quantidade=1;
-    ptr=criaprioridade();
+    ptr=alocafila();
     alocanafila(ptr, &quantidade, 8, "Lucas");
     alocanafila(ptr, &quantidade, 10, "Mateus");
     alocanafila(ptr, &quantidade, 70, "Davi");

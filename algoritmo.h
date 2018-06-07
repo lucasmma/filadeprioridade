@@ -15,7 +15,7 @@ typedef struct arvore{
 
 
 //assinaturas----------------------------------------------------
-t_arvore *criaprioridade();
+t_arvore *alocafila();
 int estavazia(t_arvore *ptr);
 t_arvore *percorrefila(t_arvore *ptr, int quantidade);
 int verificanode(t_arvore *ptr);

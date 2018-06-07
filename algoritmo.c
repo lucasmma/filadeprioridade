@@ -11,7 +11,7 @@
 
 
 //assinaturas----------------------------------------------------
-t_arvore *criaprioridade();
+t_arvore *alocafila();
 int estavazia(t_arvore *ptr);
 t_arvore *percorrefila(t_arvore *ptr, int quantidade);
 int verificanode(t_arvore *ptr);
@@ -23,7 +23,7 @@ void proximodafila(t_arvore *ptr, int *quantidade);
 void destroifila(t_arvore *ptr, int *quantidade);
 //endassinaturas-------------------------------------------------
 //funcoes--------------------------------------------------------
-t_arvore *criaprioridade(){//cria uma fila de prioridade
+t_arvore *alocafila(){//cria uma fila de prioridade
     t_arvore *ptr = (t_arvore*)malloc(sizeof(t_arvore));
     if (ptr==NULL){
         return NULL;
