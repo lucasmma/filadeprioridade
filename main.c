@@ -33,7 +33,7 @@ void menu(){
             alocanafila(ptr, &quantidade, prioridade, nome);
         }
         else if(x==2){
-            proximodafila(ptr, &quantidade);
+            removerelemento(ptr, &quantidade);
         }
         else if(x==3){
             destroifila(ptr, &quantidade);

@@ -17,12 +17,12 @@ typedef struct arvore{
 //assinaturas----------------------------------------------------
 t_arvore *alocafila();
 int estavazia(t_arvore *ptr);
-t_arvore *percorrefila(t_arvore *ptr, int quantidade);
+t_arvore *acharelemento(t_arvore *ptr, int quantidade);
 int verificanode(t_arvore *ptr);
 void troca(t_arvore *ptr, t_arvore *aux);
 void organiza(t_arvore *ptr, int quantidade);
 int alocanafila(t_arvore *ptr, int *quantidade, int prioridade, char *nome);
 void organizaquandoremove(t_arvore *ptr);
-void proximodafila(t_arvore *ptr, int *quantidade);
+void removerelemento(t_arvore *ptr, int *quantidade);
 void destroifila(t_arvore *ptr, int *quantidade);
 //endassinaturas-------------------------------------------------

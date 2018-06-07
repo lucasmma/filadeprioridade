@@ -13,13 +13,13 @@
 //assinaturas----------------------------------------------------
 t_arvore *alocafila();
 int estavazia(t_arvore *ptr);
-t_arvore *percorrefila(t_arvore *ptr, int quantidade);
+t_arvore *acharelemento(t_arvore *ptr, int quantidade);
 int verificanode(t_arvore *ptr);
 void troca(t_arvore *ptr, t_arvore *aux);
 void organiza(t_arvore *ptr, int quantidade);
 int alocanafila(t_arvore *ptr, int *quantidade, int prioridade, char *nome);
 void organizaquandoremove(t_arvore *ptr);
-void proximodafila(t_arvore *ptr, int *quantidade);
+void removerelemento(t_arvore *ptr, int *quantidade);
 void destroifila(t_arvore *ptr, int *quantidade);
 //endassinaturas-------------------------------------------------
 //funcoes--------------------------------------------------------
@@ -40,7 +40,7 @@ int estavazia(t_arvore *ptr){//verifica se a fila esta vazia
     return 0;
 }
 
-t_arvore *percorrefila(t_arvore *ptr, int quantidade){
+t_arvore *acharelemento(t_arvore *ptr, int quantidade){
     t_arvore *aux=ptr;
     if(quantidade==1||quantidade==0){
         return aux;
@@ -48,11 +48,11 @@ t_arvore *percorrefila(t_arvore *ptr, int quantidade){
     int resto=quantidade%2;
     quantidade=(quantidade-resto)/2;
     if(resto==0){
-        aux=percorrefila(aux,quantidade);
+        aux=acharelemento(aux,quantidade);
         aux=aux->esquerda;
         return aux;
     }
-    aux=percorrefila(aux,quantidade);
+    aux=acharelemento(aux,quantidade);
     aux=aux->direita;
     return aux;
 }
@@ -83,7 +83,7 @@ void organiza(t_arvore *ptr, int quantidade){//adicionar a recursividade para or
         return;
     }
     if(quantidade!=1){
-        aux=percorrefila(ptr, quantidade/2);
+        aux=acharelemento(ptr, quantidade/2);
     }
     quantidadedeno=verificanode(aux);
     if(quantidade>=2){
@@ -128,7 +128,7 @@ int alocanafila(t_arvore *ptr, int *quantidade, int prioridade, char *nome){
     if(!estavazia(ptr)){
         *quantidade=*quantidade+1;
     }
-    aux=percorrefila(ptr, *(quantidade)/2);
+    aux=acharelemento(ptr, *(quantidade)/2);
     if(!estavazia(aux)){
         if(*(quantidade)%2==0){
             aux->esquerda=(t_arvore*) malloc(sizeof(t_arvore));
@@ -190,12 +190,12 @@ void organizaquandoremove(t_arvore *ptr){
     }
 }
 
-void proximodafila(t_arvore *ptr, int *quantidade){
+void removerelemento(t_arvore *ptr, int *quantidade){
     t_arvore *aux;
     printf("%s\n", ptr->nome);
-    aux=percorrefila(ptr, *quantidade);
+    aux=acharelemento(ptr, *quantidade);
     troca(ptr, aux);
-    aux=percorrefila(ptr, *(quantidade)/2);
+    aux=acharelemento(ptr, *(quantidade)/2);
     if(*(quantidade)%2==0){
         free(aux->esquerda);
         aux->esquerda=NULL;
@@ -214,7 +214,7 @@ void proximodafila(t_arvore *ptr, int *quantidade){
 
 void destroifila(t_arvore *ptr, int *quantidade){
     while(*quantidade>1){
-        proximodafila(ptr, quantidade);
+        removerelemento(ptr, quantidade);
     }
     free(ptr);
     return;
