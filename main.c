@@ -16,7 +16,7 @@
 
 //funcoes-------------------------------------------------
 void menu(){
-    t_arvore *ptr=alocafila();
+    t_arvore *ptr=alocaelemento();
     int prioridade,quantidade=1;
     char nome[100];
     int x;
@@ -26,11 +26,11 @@ void menu(){
         printf("3-Sair\n");
         scanf("%d", &x);
         if(x==1){
-            printf("Digite o nome; ");
+            printf("Digite o nome: ");
             scanf("%s", nome);
             printf("Digite a prioridade: ");
             scanf("%d", &prioridade);
-            alocanafila(ptr, &quantidade, prioridade, nome);
+            inserirelemento(ptr, &quantidade, prioridade, nome);
         }
         else if(x==2){
             removerelemento(ptr, &quantidade);

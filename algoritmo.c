@@ -11,19 +11,19 @@
 
 
 //assinaturas----------------------------------------------------
-t_arvore *alocafila();
+t_arvore *alocaelemento();
 int estavazia(t_arvore *ptr);
 t_arvore *acharelemento(t_arvore *ptr, int quantidade);
 int verificanode(t_arvore *ptr);
 void troca(t_arvore *ptr, t_arvore *aux);
 void organiza(t_arvore *ptr, int quantidade);
-int alocanafila(t_arvore *ptr, int *quantidade, int prioridade, char *nome);
+int inserirelemento(t_arvore *ptr, int *quantidade, int prioridade, char *nome);
 void organizaquandoremove(t_arvore *ptr);
 void removerelemento(t_arvore *ptr, int *quantidade);
 void destroifila(t_arvore *ptr, int *quantidade);
 //endassinaturas-------------------------------------------------
 //funcoes--------------------------------------------------------
-t_arvore *alocafila(){//cria uma fila de prioridade
+t_arvore *alocaelemento(){//cria uma fila de prioridade
     t_arvore *ptr = (t_arvore*)malloc(sizeof(t_arvore));
     if (ptr==NULL){
         return NULL;
@@ -120,7 +120,7 @@ void organiza(t_arvore *ptr, int quantidade){//adicionar a recursividade para or
     }
 }
 
-int alocanafila(t_arvore *ptr, int *quantidade, int prioridade, char *nome){
+int inserirelemento(t_arvore *ptr, int *quantidade, int prioridade, char *nome){
     if(ptr==NULL){
         return 0;
     }
@@ -131,12 +131,12 @@ int alocanafila(t_arvore *ptr, int *quantidade, int prioridade, char *nome){
     aux=acharelemento(ptr, *(quantidade)/2);
     if(!estavazia(aux)){
         if(*(quantidade)%2==0){
-            aux->esquerda=(t_arvore*) malloc(sizeof(t_arvore));
+            aux->esquerda=alocaelemento();
             strcpy(aux->esquerda->nome, nome);
             aux->esquerda->prioridade=prioridade;
         }
         else{
-            aux->direita=(t_arvore*) malloc(sizeof(t_arvore));
+            aux->direita=alocaelemento();
             strcpy(aux->direita->nome, nome);
             aux->direita->prioridade=prioridade;
         }
@@ -194,7 +194,9 @@ void removerelemento(t_arvore *ptr, int *quantidade){
     t_arvore *aux;
     printf("%s\n", ptr->nome);
     aux=acharelemento(ptr, *quantidade);
-    troca(ptr, aux);
+    if(!novazio(ptr)){
+        troca(ptr, aux);
+    }
     aux=acharelemento(ptr, *(quantidade)/2);
     if(*(quantidade)%2==0){
         free(aux->esquerda);
