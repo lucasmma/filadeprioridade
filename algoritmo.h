@@ -24,5 +24,6 @@ void organiza(t_arvore *ptr, int quantidade);
 int inserirelemento(t_arvore *ptr, int *quantidade, int prioridade, char *nome);
 void organizaquandoremove(t_arvore *ptr);
 void removerelemento(t_arvore *ptr, int *quantidade);
+int novazio(t_arvore *ptr);
 void destroifila(t_arvore *ptr, int *quantidade);
 //endassinaturas-------------------------------------------------

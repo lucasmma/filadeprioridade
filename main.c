@@ -33,6 +33,16 @@ void menu(){
             inserirelemento(ptr, &quantidade, prioridade, nome);
         }
         else if(x==2){
+            if(novazio(ptr)){
+                printf("%s\n", ptr->nome);
+                free(ptr);
+                ptr==NULL;
+                continue;
+            }
+            if(ptr==NULL){
+                printf("Codigo invalido, digite novamente\n");
+                continue;
+            }
             removerelemento(ptr, &quantidade);
         }
         else if(x==3){

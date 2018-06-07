@@ -19,6 +19,7 @@ void troca(t_arvore *ptr, t_arvore *aux);
 void organiza(t_arvore *ptr, int quantidade);
 int inserirelemento(t_arvore *ptr, int *quantidade, int prioridade, char *nome);
 void organizaquandoremove(t_arvore *ptr);
+int novazio(t_arvore *ptr);
 void removerelemento(t_arvore *ptr, int *quantidade);
 void destroifila(t_arvore *ptr, int *quantidade);
 //endassinaturas-------------------------------------------------
@@ -205,9 +206,6 @@ void removerelemento(t_arvore *ptr, int *quantidade){
     else{
         free(aux->direita);
         aux->direita=NULL;
-    }
-    if(estavazia(ptr)){
-        return;
     }
     *quantidade=*quantidade-1;
     organizaquandoremove(ptr);
