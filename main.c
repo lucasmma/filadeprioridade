@@ -26,6 +26,9 @@ void menu(){
         printf("3-Sair\n");
         scanf("%d", &x);
         if(x==1){
+            if(ptr==NULL){
+                ptr=alocaelemento();
+            }
             printf("Digite o nome: ");
             scanf("%s", nome);
             printf("Digite a prioridade: ");
@@ -33,14 +36,14 @@ void menu(){
             inserirelemento(ptr, &quantidade, prioridade, nome);
         }
         else if(x==2){
+            if(ptr==NULL){
+                printf("Codigo invalido, digite novamente\n");
+                continue;
+            }
             if(novazio(ptr)){
                 printf("%s\n", ptr->nome);
                 free(ptr);
-                ptr==NULL;
-                continue;
-            }
-            if(ptr==NULL){
-                printf("Codigo invalido, digite novamente\n");
+                ptr=NULL;
                 continue;
             }
             removerelemento(ptr, &quantidade);
